@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CC105</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 25px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+  color: #684b4b;
+  background: linear-gradient(135deg, #f8eee7, #f1dadd);
+}
+
+.card {
+  width: 100%;
+  max-width: 680px;
+  padding: 35px 25px;
+  background: #fffaf6;
+  border: 1px solid #ead4d0;
+  border-radius: 22px;
+  box-shadow: 0 18px 55px #6f464622;
+}
+
+h1 {
+  text-align: center;
+  font-weight: normal;
+}
+
+.sub {
+  text-align: center;
+  color: #a17b7b;
+  font-style: italic;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d9babb;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #b77e87;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#error {
+  color: #a34f5d;
+  text-align: center;
+}
+
+#letterScreen {
+  display: none;
+}
+
+#letterText {
+  white-space: pre-wrap;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+.signature {
+  text-align: right;
+  color: #a17b7b;
+}
+
+#musicFallback {
+  display: none;
+  text-align: center;
+  color: #a17b7b;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  color: #d49aa3;
+  opacity: .6;
+  animation: floatUp 7s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: .6;
+  }
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="nameScreen">
+
+  <h1>A little letter for you</h1>
+  <p class="sub">Some words I've been meaning to share.</p>
+
+  <form id="nameForm">
+    <label for="name">Before you open it, please enter your name.</label>
+
+    <input
+      type="text"
+      id="name"
+      placeholder="Enter your name..."
+      autocomplete="off"
+      required
+    >
+
+    <button type="submit">Open Letter</button>
+
+    <p id="error"></p>
+  </form>
+
+</div>
+
+<div class="card" id="letterScreen">
+
+  <h1>For you, Zaira ♡</h1>
+
+  <p id="letterText"></p>
+
+  <p class="signature" id="signature" style="display:none;">
+    — ♡
+  </p>
+
+  <p id="musicFallback">
+    If the music didn't start, tap here to play ♫
+  </p>
+
+</div>
+
+<audio
+  id="bgMusic"
+  src="./it-might-be-you-instrumental.mp3"
+  preload="auto"
+  loop>
+</audio>
+
+<script>
+
+const confession = `hiii, naa unta koy gusto isulti nimo nga dugay na gyud nako gusto i share, pero wala lang gyud ko nakakita og sakto nga time ug courage para isulti ni. since elementary pa ta, naa na gyud koy feelings para nimo. sauna, wala ra nako gi mind kay abi nako simple crush ra ni nga mawala ra kadugayan. pero as time passed, na realize nako nga wala diay siya nawala. daghan na ang nausab since then, ug dili na pud ta parehas ka close sauna, pero naa gihapon akong feelings para nimo. if ever naka notice ka nga usahay murag wala tika tagda or maglikay ko nimo, i'm really sorry about that. dili gyud to tungod kay dili ko ganahan makig istorya nimo or wala koy gana makig interact nimo. usahay ma awkward lang gyud ko kay dili ko kabalo unsaon pag act around you, especially knowing nga naa koy feelings para nimo. i hope wala nimo na misunderstood akong actions sauna. i also want to thank you sa mga little things nga imong gibuhat para nako. especially sa mga times nga gina librehan ko nimo and sa mga moments nga magkauban ta. basin simple ra to para nimo, pero i really appreciate those things more than you think. honestly, dugay na kaayo ni nako gusto isulti, pero karon pa gyud ko nakakuha og courage. i'm not telling you this because naa koy gi expect nga mahitabo between us. dili pud ko nangayo og answer or expecting you to feel the same way. gusto lang gyud nako nga ma express akong feelings nga dugay na nako gitago. i hope nga dili ka ma pressure after nimo mabasa ni, and i hope nga dili pud ni mahimong reason para ma awkward ta sa usag usa. i still value our friendship, and i don't want you to feel nga kinahanglan naay mausab tungod lang kay ni open up ko nimo. i don't know if you ever noticed how special you are to me, but i hope you know that i genuinely appreciate having you in my life. i never regretted meeting you, and even though time has changed a lot of things between us, i'm still glad that we got to share those memories together. i want you to know that i see every version of you. the happy one, the quiet one, the strong one, and even the versions of yourself that you don't always show to other people. you don't have to be the same person every day for you to be appreciated. no matter how much you change or grow, i'll always be glad that i got to know different sides of you. and i hope you never feel like you have to hide any part of yourself just to be appreciated. whatever happens, i'm still happy nga naka ila ila ko nimo. you've been important to me for a long time, and i just wanted you to know how much i appreciate you. and lastly, i'm genuinely grateful that i have a best friend like you. i'm grateful that i got a front row seat to your life, to your growth, and to all the little moments that make you who you are. getting to know you and being part of some of your memories is something i'll always appreciate. i'm really glad that life gave me the chance to know you and call you my best friend. that's all. i just wanted to be honest with you, finally. also, i hope nga this stays between us lang. personal ni para nako, and i would really appreciate it if dili na nato i share sa uban. gusto lang nako nga kita ra duha ang makahibalo ani. ♡`;
+
+const form = document.getElementById("nameForm");
+const nameInput = document.getElementById("name");
+const error = document.getElementById("error");
+
+const nameScreen = document.getElementById("nameScreen");
+const letterScreen = document.getElementById("letterScreen");
+const letterText = document.getElementById("letterText");
+const signature = document.getElementById("signature");
+
+const music = document.getElementById("bgMusic");
+const musicFallback = document.getElementById("musicFallback");
+
+let typingTimer;
+
+form.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  if (nameInput.value.trim().toLowerCase() !== "zaira") {
+    error.textContent = "Sorry, this letter isn't for that name. ♡";
+    return;
+  }
+
+  error.textContent = "";
+
+  nameScreen.style.display = "none";
+  letterScreen.style.display = "block";
+
+  // Attempt to play music immediately after pressing Enter.
+  music.volume = 0.45;
+
+  music.play().then(() => {
+    musicFallback.style.display = "none";
+  }).catch(() => {
+    // Some browsers block automatic playback.
+    musicFallback.style.display = "block";
+  });
+
+  let index = 0;
+
+  letterText.textContent = "";
+  signature.style.display = "none";
+
+  clearInterval(typingTimer);
+
+  typingTimer = setInterval(function() {
+
+    letterText.textContent += confession.charAt(index);
+
+    index++;
+
+    if (index >= confession.length) {
+
+      clearInterval(typingTimer);
+      signature.style.display = "block";
+
+    }
+
+  }, 28);
+
+});
+
+musicFallback.addEventListener("click", function() {
+
+  music.play().then(() => {
+    musicFallback.style.display = "none";
+  }).catch(() => {
+    musicFallback.textContent = "Please check your browser audio settings.";
+  });
+
+});
+
+function createHeart() {
+
+  const heart = document.createElement("span");
+
+  heart.className = "heart";
+  heart.textContent = "♡";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (14 + Math.random() * 18) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 7000);
+
+}
+
+setInterval(createHeart, 950);
+
+</script>
+
+</body>
+</html>
